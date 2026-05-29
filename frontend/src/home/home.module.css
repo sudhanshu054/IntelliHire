@@ -1,0 +1,274 @@
+.page {
+  min-height: 100vh;
+  color: #eef3f8;
+  background: #0b1114;
+}
+
+.hero {
+  min-height: 690px;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(360px, 1fr);
+  gap: 46px;
+  align-items: center;
+  padding: 90px 40px 70px;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(24, 120, 185, 0.28), transparent 42%),
+    linear-gradient(180deg, #0d151b 0%, #0b1114 86%);
+  overflow: hidden;
+}
+
+.heroCopy {
+  max-width: 620px;
+}
+
+.badge,
+.miniLabel {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid #34576d;
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: #95d7ff;
+  background: #102434;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+
+.hero h1 {
+  margin-top: 22px;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 0.98;
+  font-weight: 900;
+}
+
+.hero h1 span,
+.discovery h2 span {
+  color: #83ceff;
+}
+
+.hero p,
+.discovery p,
+.practiceCard p,
+.insightCard p,
+.ask p {
+  color: #d4d9df;
+  line-height: 1.65;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 28px 0;
+  font-size: 1.05rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.heroActions button,
+.practiceCard button,
+.accountBar button {
+  min-height: 48px;
+  border-radius: 7px;
+  border: 1px solid #87d0ff;
+  padding: 0 24px;
+  color: #071016;
+  background: linear-gradient(135deg, #7dc8f5, #138ee5);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 14px 24px rgba(21, 154, 224, 0.22);
+}
+
+.heroActions button:nth-child(2) {
+  color: #9edcff;
+  background: #0b1114;
+}
+
+.heroVisual {
+  min-height: 410px;
+  border-radius: 11px;
+  border: 1px solid #29485c;
+  overflow: hidden;
+  background: #09121c;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4);
+}
+
+.heroVisual img,
+.insightCard img,
+.discovery img,
+.ask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.64;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1.8fr 0.9fr;
+  gap: 24px;
+  padding: 50px 40px;
+}
+
+.insightCard,
+.practiceCard,
+.ask {
+  border: 1px solid #243441;
+  border-radius: 8px;
+  background: #131c24;
+}
+
+.insightCard {
+  padding: 28px;
+  cursor: pointer;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.insightCard h2,
+.practiceCard h2,
+.discovery h2,
+.ask h2 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 900;
+}
+
+.insightCard p {
+  max-width: 720px;
+  margin: 14px 0 28px;
+}
+
+.insightCard img {
+  height: 260px;
+  border-radius: 6px;
+}
+
+.practiceCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: #03131d;
+  background: #19a8e3;
+}
+
+.practiceCard p {
+  color: #073047;
+}
+
+.practiceCard button {
+  width: 100%;
+  background: #0b1114;
+  color: #f1f6fb;
+  border-color: #0b1114;
+  box-shadow: none;
+}
+
+.discovery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 50px 40px 70px;
+}
+
+.discovery > img {
+  max-height: 360px;
+  border: 1px solid #29485c;
+  border-radius: 8px;
+}
+
+.discoveryBullets {
+  display: grid;
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.discoveryBullets div,
+.askGrid div {
+  display: grid;
+  gap: 4px;
+  color: #eef3f8;
+}
+
+.discoveryBullets span,
+.askGrid span {
+  color: #b3bdc7;
+  font-size: 0.92rem;
+}
+
+.ask {
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr;
+  gap: 42px;
+  align-items: center;
+  margin: 0 40px 70px;
+  padding: 44px;
+  background: linear-gradient(135deg, #111b25, #172433);
+}
+
+.ask img {
+  max-height: 220px;
+  border-radius: 6px;
+}
+
+.askGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.askGrid div {
+  border: 1px solid #243441;
+  border-radius: 5px;
+  padding: 18px;
+  background: #101820;
+}
+
+.accountBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px;
+  color: #cbd4dd;
+  background: #091013;
+  border-top: 1px solid #1c2932;
+}
+
+.accountBar button:last-child {
+  background: #20282f;
+  color: #ffb6b6;
+  border-color: #514048;
+  box-shadow: none;
+}
+
+@media (max-width: 950px) {
+  .hero,
+  .featureGrid,
+  .discovery,
+  .ask {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .featureGrid,
+  .discovery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ask {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,318 @@
+.page {
+  min-height: 100vh;
+  color: #eef3f8;
+  background: #0b1114;
+}
+
+.dash,
+.main {
+  min-height: calc(100vh - 120px);
+  padding: 60px 40px 120px;
+}
+
+.recruiterHeader,
+.topbar,
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brandLine {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brandLine span {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  color: #071016;
+  background: linear-gradient(135deg, #85cdf8, #139fe0);
+  font-weight: 900;
+}
+
+.brandLine h1,
+.title {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 900;
+}
+
+.recruiterHeader p,
+.subtle {
+  margin-top: 14px;
+  color: #c7ced6;
+  font-size: 1.25rem;
+}
+
+.btnGhost,
+.btnPrimary {
+  min-height: 54px;
+  border-radius: 12px;
+  border: 1px solid #3a4b55;
+  padding: 0 24px;
+  color: #eaf3fb;
+  background: #20282f;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btnPrimary {
+  color: #06141c;
+  border-color: #78c8fb;
+  background: #83ceff;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 70px;
+}
+
+.kpiGrid article,
+.ctaGrid button,
+.listCard,
+.form {
+  border: 1px solid #223039;
+  border-radius: 20px;
+  background: #12191d;
+}
+
+.kpiGrid article {
+  min-height: 192px;
+  padding: 40px;
+}
+
+.kpiGrid span {
+  display: inline-flex;
+  border-radius: 4px;
+  padding: 7px 11px;
+  color: #9bd8ff;
+  background: #173145;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.kpiGrid article:nth-child(2) span {
+  color: #bcd2ff;
+  background: #202b46;
+}
+
+.kpiGrid article:nth-child(3) span {
+  color: #ffbd75;
+  background: #36291a;
+}
+
+.kpiGrid h2 {
+  margin-top: 24px;
+  font-size: 2.2rem;
+}
+
+.kpiGrid i {
+  display: block;
+  width: 62px;
+  height: 5px;
+  border-radius: 999px;
+  margin-top: 12px;
+  background: #8bd2ff;
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.ctaGrid button {
+  min-height: 390px;
+  text-align: left;
+  color: #f1f5f9;
+  padding: 52px;
+  cursor: pointer;
+}
+
+.ctaIcon {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  margin-bottom: 36px;
+  color: #8bd2ff;
+  background: #21303d;
+  font-size: 2rem;
+}
+
+.ctaGrid h2 {
+  font-size: 2rem;
+  margin-bottom: 22px;
+}
+
+.ctaGrid p,
+.desc,
+.skills {
+  color: #c7ced6;
+  line-height: 1.6;
+}
+
+.ctaGrid b {
+  display: inline-block;
+  margin-top: 34px;
+  color: #8bd2ff;
+}
+
+.topbar {
+  margin-bottom: 60px;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  display: flex;
+  gap: 36px;
+  border-bottom: 1px solid #3a4b55;
+  margin-bottom: 40px;
+}
+
+.tabs button {
+  padding: 0 30px 18px;
+  color: #c7ced6;
+  font-weight: 800;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.tabs .activeTab {
+  color: #8bd2ff;
+  border-bottom: 3px solid #8bd2ff;
+}
+
+.emptyPanel {
+  min-height: 500px;
+  border: 1px dashed #43535f;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.emptyIcon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 26px;
+  background: #2b343c;
+  color: #9aa5af;
+  font-size: 2.5rem;
+}
+
+.emptyPanel h2 {
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+}
+
+.emptyPanel p {
+  max-width: 460px;
+  color: #c7ced6;
+  line-height: 1.55;
+}
+
+.emptyPanel button {
+  margin-top: 34px;
+}
+
+.list {
+  display: grid;
+  gap: 20px;
+}
+
+.listCard {
+  padding: 28px;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.metaRow span {
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: #cfe4ff;
+  background: #203142;
+}
+
+.form {
+  max-width: 980px;
+  display: grid;
+  gap: 16px;
+  padding: 32px;
+}
+
+.gridTwo,
+.gridThree {
+  display: grid;
+  gap: 16px;
+}
+
+.gridTwo {
+  grid-template-columns: 1fr 1fr;
+}
+
+.gridThree {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.input,
+.textarea {
+  border: 1px solid #293944;
+  border-radius: 9px;
+  padding: 14px 16px;
+  color: #f1f5f9;
+  background: #151b20;
+  font-size: 1rem;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+@media (max-width: 900px) {
+  .recruiterHeader,
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kpiGrid,
+  .ctaGrid,
+  .gridTwo,
+  .gridThree {
+    grid-template-columns: 1fr;
+  }
+
+  .dash,
+  .main {
+    padding: 32px 20px 70px;
+  }
+}
