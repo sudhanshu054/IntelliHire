@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usercontext } from "../appcontext.jsx";
@@ -13,9 +13,28 @@ function Jobs() {
   const [applyingId, setapplyingId] = useState(null);
   const [search, setsearch] = useState("");
   const [sortBy, setsortBy] = useState("latest");
-  const [experienceFilters, setExperienceFilters] = useState(["Mid-Senior"]);
+  const [experienceFilters, setExperienceFilters] = useState([]);
   const [workFilters, setWorkFilters] = useState([]);
   const [visibleCount, setVisibleCount] = useState(5);
+
+  const loadJobs = useCallback((keyword = "") => {
+    setisloading(true);
+    const params = new URLSearchParams();
+    const trimmedKeyword = keyword.trim();
+    if (trimmedKeyword) params.set("search", trimmedKeyword);
+    if (sortBy) params.set("sort", sortBy);
+
+    fetch(`${serviceURL}/jobs?${params.toString()}`, { method: "get", credentials: "include" })
+      .then((response) => {
+        if (response.ok) return response.json();
+        return response.text().then((t) => {
+          throw new Error(t || "Failed to load jobs");
+        });
+      })
+      .then((data) => setjobs(Array.isArray(data) ? data : []))
+      .catch((err) => toast.error(err.message || "Network error"))
+      .finally(() => setisloading(false));
+  }, [serviceURL, sortBy]);
 
   useEffect(() => {
     if (!islogged) {
@@ -26,18 +45,8 @@ function Jobs() {
       navigate("/");
       return;
     }
-    setisloading(true);
-    fetch(`${serviceURL}/jobs`, { method: "get", credentials: "include" })
-      .then((response) => {
-        if (response.ok) return response.json();
-        return response.text().then((t) => {
-          throw new Error(t || "Failed to load jobs");
-        });
-      })
-      .then((data) => setjobs(Array.isArray(data) ? data : []))
-      .catch((err) => toast.error(err.message || "Network error"))
-      .finally(() => setisloading(false));
-  }, [islogged, role, navigate, serviceURL]);
+    loadJobs("");
+  }, [islogged, role, navigate, loadJobs]);
 
   const filteredJobs = useMemo(() => [...jobs]
     .filter((j) => {
@@ -70,6 +79,7 @@ function Jobs() {
 
   const runSearch = () => {
     setVisibleCount(5);
+    loadJobs(search);
     toast.info(search.trim() ? "Search applied" : "Showing all opportunities");
   };
 

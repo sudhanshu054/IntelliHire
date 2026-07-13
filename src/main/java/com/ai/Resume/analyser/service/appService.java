@@ -57,6 +57,9 @@ public class appService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ResponseEntity<?> extract(String roles, MultipartFile file) throws TikaException, IOException, InterruptedException {
+        if (genKey == null || genKey.isBlank()) {
+            return new ResponseEntity<>("AI key is not configured", HttpStatus.SERVICE_UNAVAILABLE);
+        }
 
         Tika tika = new Tika();
         ByteArrayInputStream inpfile = new ByteArrayInputStream(file.getBytes());
@@ -158,12 +161,26 @@ public class appService {
     public ResponseEntity<?> lastReport() {
         previousTable previousTable = previousTableRepo.findById(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
         if(previousTable != null){
+            if (applicationId == null || applicationId.isBlank() || applicationApiKey == null || applicationApiKey.isBlank()) {
+                resultsDto resultsDto = new resultsDto(
+                        previousTable.getScore(),
+                        previousTable.getAtsoptimizationscore(),
+                        previousTable.getPros(),
+                        previousTable.getCons(),
+                        previousTable.getSuggestions(),
+                        List.of()
+                );
+                return new ResponseEntity<>(resultsDto, HttpStatus.OK);
+            }
             // Job from API
             RestTemplate restTemplate = new RestTemplate();
             List<Job> jobs;
             String url = "https://api.adzuna.com/v1/api/jobs/in/search/1?app_id="+applicationId+"&app_key="+applicationApiKey+"&what="+previousTable.getRoles()+"&where=tamilnadu&content-type=application/json";
             try{
                 JobSearchResponse response = restTemplate.getForObject(url, JobSearchResponse.class);
+                if (response == null || response.getResults() == null) {
+                    throw new IllegalStateException("Adzuna returned no results");
+                }
                 jobs = response.getResults();
             }
             catch (Exception e) {
@@ -215,6 +232,9 @@ public class appService {
     }
 
     private String generateWithGrok(String prompt) throws IOException {
+        if (genKey == null || genKey.isBlank()) {
+            throw new IOException("Missing AI key");
+        }
         String url;
         String model;
 

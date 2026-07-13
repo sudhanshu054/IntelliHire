@@ -27,8 +27,13 @@ public class jobController {
     }
 
     @GetMapping("/jobs")
-    public ResponseEntity<?> listJobsForSeekers(){
-        return jobService.listJobsForSeekers();
+    public ResponseEntity<?> listJobsForSeekers(
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) String experience,
+            @RequestParam(required = false) String workMode,
+            @RequestParam(defaultValue = "latest") String sort
+    ){
+        return jobService.listJobsForSeekers(search, experience, workMode, sort);
     }
 
     @GetMapping("/jobs/applied")

@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -86,7 +87,7 @@ public class jobService {
         return new ResponseEntity<>(recruiterJobPostRepo.findByRecruiterEmailOrderByCreatedAtDesc(user.getEmail()), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> listJobsForSeekers() {
+    public ResponseEntity<?> listJobsForSeekers(String search, String experience, String workMode, String sort) {
         usersTable user = getCurrentUser();
         if (user == null) {
             return new ResponseEntity<>("Unauthorised request", HttpStatus.UNAUTHORIZED);
@@ -100,12 +101,15 @@ public class jobService {
         for (JobApplication a : applied) {
             appliedJobIds.add(a.getJobId());
         }
-        List<RecruiterJobPost> all = recruiterJobPostRepo.findAllByOrderByCreatedAtDesc();
+        List<RecruiterJobPost> all = recruiterJobPostRepo.searchForSeekers(clean(search), clean(experience), clean(workMode));
         List<RecruiterJobPost> available = new ArrayList<>();
         for (RecruiterJobPost j : all) {
             if (!appliedJobIds.contains(j.getId())) {
                 available.add(j);
             }
+        }
+        if ("title".equalsIgnoreCase(clean(sort))) {
+            available.sort(Comparator.comparing(j -> safe(j.getTitle()), String.CASE_INSENSITIVE_ORDER));
         }
         return new ResponseEntity<>(available, HttpStatus.OK);
     }
@@ -187,6 +191,14 @@ public class jobService {
         }
 
         return new ResponseEntity<>(out, HttpStatus.OK);
+    }
+
+    private String clean(String value) {
+        return value == null ? "" : value.trim();
+    }
+
+    private String safe(String value) {
+        return value == null ? "" : value;
     }
 }
 
