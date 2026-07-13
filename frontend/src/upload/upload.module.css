@@ -27,11 +27,14 @@
   padding: 10px 14px;
 }
 
-.nav h1 {
+.brandLink {
+  display: inline-block;
   background: linear-gradient(135deg, #f8fafc, #7dd3fc);
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 700;
+  font-size: 2em;
+  text-decoration: none;
 }
 
 .nav button {
@@ -280,7 +283,7 @@
 }
 
 @media screen and (max-width: 431px) {
-  .nav h1 {
+  .brandLink {
     font-size: 1.1rem;
   }
 }

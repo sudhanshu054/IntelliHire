@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usercontext } from "../appcontext.jsx";
 import { Footer } from "../ui.jsx";
@@ -32,7 +32,7 @@ function RecruiterDashboard() {
       <main className={Styles.dash}>
         <header className={Styles.recruiterHeader}>
           <div>
-            <div className={Styles.brandLine}><span>IH</span><h1>IntelliHire Recruiter Hub</h1></div>
+            <Link className={Styles.brandLine} to="/"><span>IH</span><h1>IntelliHire Recruiter Hub</h1></Link>
             <p>Welcome back, <b>{username}</b>. Manage openings and shortlist better.</p>
           </div>
           <button className={Styles.btnGhost} onClick={logout}>Logout</button>

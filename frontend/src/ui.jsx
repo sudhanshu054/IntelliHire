@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Styles from "./ui.module.css";
 
 export function BrandNav({ active = "Home", onLogout, userInitial, recruiter = false }) {
@@ -21,10 +21,10 @@ export function BrandNav({ active = "Home", onLogout, userInitial, recruiter = f
 
   return (
     <header className={Styles.nav}>
-      <button type="button" className={Styles.brand} onClick={() => navigate("/")}>
+      <Link className={Styles.brand} to="/">
         <span className={Styles.logoMark}>IH</span>
         IntelliHire
-      </button>
+      </Link>
       <nav className={Styles.links}>
         {links.map(([label, path]) => (
           <button

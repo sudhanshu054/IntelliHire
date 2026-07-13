@@ -230,7 +230,7 @@ function Login() {
     return (
         <div className={Styles.container}>
             <div className={Styles.nav}>
-                <h1>IntelliHire</h1>
+                <Link className={Styles.brandLink} to="/">IntelliHire</Link>
             </div>
             {!isemailverified ? <div className={Styles.logincontainer}>
                 <h1>{islogin ? "Login" : "Signup"}</h1>

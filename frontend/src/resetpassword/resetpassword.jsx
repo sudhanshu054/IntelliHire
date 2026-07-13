@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import Styles from "./resetpassword.module.css"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { usercontext } from "../appcontext"
 import { toast } from "react-toastify"
 
@@ -175,7 +175,7 @@ function Forgotpassword() {
     return (
         <div className={Styles.container}>
             <div className={Styles.nav}>
-                <h1>IntelliHire</h1>
+                <Link className={Styles.brandLink} to="/">IntelliHire</Link>
             </div>
 
             {!isemailpresent && !isemailverified ?

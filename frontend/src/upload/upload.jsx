@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 import Styles from "./upload.module.css"
 import { useContext, useState } from "react"
 import { usercontext } from "../appcontext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Uploadpage() {
 
 
@@ -71,7 +71,7 @@ function Uploadpage() {
     return (
         <div className={Styles.container}>
             <div className={Styles.nav}>
-                <h1>IntelliHire</h1>
+                <Link className={Styles.brandLink} to="/">IntelliHire</Link>
                 <button onClick={()=>navigate("/")}>Home</button>
             </div>
 

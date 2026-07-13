@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Styles from "./analyse.module.css"
 import { Heat } from "@alptugidin/react-circular-progress-bar"
 import { usercontext } from "../appcontext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 function Analyse() {
     const navigate = useNavigate()
     const [score, setscore] = useState(0)
@@ -58,7 +58,7 @@ function Analyse() {
     return (
         <div className={Styles.container}>
             <div className={Styles.nav}>
-                <h1>IntelliHire</h1>
+                <Link className={Styles.brandLink} to="/">IntelliHire</Link>
                 <button onClick={() => navigate("/uploaddoc")}>Analyse</button>
             </div>
 
